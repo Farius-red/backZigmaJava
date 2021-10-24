@@ -1,4 +1,4 @@
-package backZigma.login.security.entity;
+package backZigma.security.entity;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

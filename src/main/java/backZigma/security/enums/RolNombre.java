@@ -1,4 +1,4 @@
-package backZigma.login.security.enums;
+package backZigma.security.enums;
 
 public enum RolNombre {
     ROL_ADMIN,

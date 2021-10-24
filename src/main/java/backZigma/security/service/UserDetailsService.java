@@ -1,7 +1,7 @@
-package backZigma.login.security.service;
+package backZigma.security.service;
 
-import backZigma.login.security.entity.Usuario;
-import backZigma.login.security.entity.UsuarioPrincipal;
+import backZigma.security.entity.Usuario;
+import backZigma.security.entity.UsuarioPrincipal;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;

@@ -1,7 +1,7 @@
-package backZigma.login.security.repository;
+package backZigma.security.repository;
 
-import backZigma.login.security.entity.Rol;
-import backZigma.login.security.enums.RolNombre;
+import backZigma.security.entity.Rol;
+import backZigma.security.enums.RolNombre;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

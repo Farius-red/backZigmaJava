@@ -1,6 +1,6 @@
-package backZigma.login.security.repository;
+package backZigma.security.repository;
 
-import backZigma.login.security.entity.Usuario;
+import backZigma.security.entity.Usuario;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

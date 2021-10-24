@@ -1,7 +1,7 @@
-package backZigma.login.security.service;
+package backZigma.security.service;
 
-import backZigma.login.security.entity.Usuario;
-import backZigma.login.security.repository.UsuarioRepository;
+import backZigma.security.entity.Usuario;
+import backZigma.security.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

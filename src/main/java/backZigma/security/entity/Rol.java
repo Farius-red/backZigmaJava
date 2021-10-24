@@ -1,6 +1,6 @@
-package backZigma.login.security.entity;
+package backZigma.security.entity;
 
-import backZigma.login.security.enums.RolNombre;
+import backZigma.security.enums.RolNombre;
 import com.sun.istack.NotNull;
 
 import javax.persistence.*;

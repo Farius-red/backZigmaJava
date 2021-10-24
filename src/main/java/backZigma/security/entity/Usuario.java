@@ -1,4 +1,4 @@
-package backZigma.login.security.entity;
+package backZigma.security.entity;
 
 import com.sun.istack.NotNull;
 

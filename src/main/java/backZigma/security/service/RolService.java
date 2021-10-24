@@ -1,9 +1,9 @@
-package backZigma.login.security.service;
+package backZigma.security.service;
 
-import backZigma.login.security.entity.Rol;
+import backZigma.security.entity.Rol;
 
-import backZigma.login.security.enums.RolNombre;
-import backZigma.login.security.repository.RolRepository;
+import backZigma.security.enums.RolNombre;
+import backZigma.security.repository.RolRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
