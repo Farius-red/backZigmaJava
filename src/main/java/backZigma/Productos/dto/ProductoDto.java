@@ -32,4 +32,60 @@ public class ProductoDto {
         this.precioVenta = precioVenta;
         this.rutaImagen = rutaImagen;
     }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    public String getMedidas() {
+        return medidas;
+    }
+
+    public void setMedidas(String medidas) {
+        this.medidas = medidas;
+    }
+
+    public float getPrecioFab() {
+        return precioFab;
+    }
+
+    public void setPrecioFab(float precioFab) {
+        this.precioFab = precioFab;
+    }
+
+    public float getPrecioVenta() {
+        return precioVenta;
+    }
+
+    public void setPrecioVenta(float precioVenta) {
+        this.precioVenta = precioVenta;
+    }
+
+    public String getRutaImagen() {
+        return rutaImagen;
+    }
+
+    public void setRutaImagen(String rutaImagen) {
+        this.rutaImagen = rutaImagen;
+    }
 }
