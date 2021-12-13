@@ -24,25 +24,25 @@ UserDetailsService userDetailsService;
     @Override
     protected void doFilterInternal(HttpServletRequest req, HttpServletResponse res, FilterChain filterChain) throws ServletException, IOException {
         try {
-        String token = getToken(req);
-        if (token != null && jwtProvider.validateToken(token)){
-            String nombreUsuario = jwtProvider.getNombreUsuarioFromToken(token);
-            UserDetails userDetails = userDetailsService.loadUserByUsername(nombreUsuario);
-            UsernamePasswordAuthenticationToken auth =
-                    new UsernamePasswordAuthenticationToken(userDetails, null,userDetails.getAuthorities());
-            SecurityContextHolder.getContext().setAuthentication(auth);
+            String token = getToken(req);
+            if(token != null && jwtProvider.validateToken(token)){
+                String nombreUsuario = jwtProvider.getNombreUsuarioFromToken(token);
+                UserDetails userDetails = userDetailsService.loadUserByUsername(nombreUsuario);
+
+                UsernamePasswordAuthenticationToken auth =
+                        new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
+                SecurityContextHolder.getContext().setAuthentication(auth);
+            }
+        } catch (Exception e){
+            logger.error("fail en el método doFilter " + e.getMessage());
         }
-        }catch (Exception e){
-            logger.error("fail en el metodo doFilter");
-        }
-        filterChain.doFilter(req,res);
+        filterChain.doFilter(req, res);
     }
 
-    private String getToken(HttpServletRequest req){
-
-        String header = req.getHeader("Authorization");
-        if (header != null && header.startsWith("Bearer"))
-            return  header.replace("Bearer", "" );
-         return null;
+    private String getToken(HttpServletRequest request){
+        String header = request.getHeader("Authorization");
+        if(header != null && header.startsWith("Bearer"))
+            return header.replace("Bearer ", "");
+        return null;
     }
 }

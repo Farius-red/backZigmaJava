@@ -60,10 +60,10 @@ public class AuthController {
 
         Usuario usuario = new Usuario(nuevoUsuario.getNombre(), nuevoUsuario.getNombreUsuario(), nuevoUsuario.getEmail(), passwordEncoder.encode(nuevoUsuario.getPassword()));
         Set<Rol> roles = new HashSet<>();
-        roles.add(rolService.getByRolNombre(RolNombre.ROL_USER).get());
+        roles.add(rolService.getByRolNombre(RolNombre.ROLE_USER).get());
         new ResponseEntity(new Mensaje("Usuario Creado Correctamente"), HttpStatus.ACCEPTED);
         if (nuevoUsuario.getRoles().contains("admin"))
-            roles.add(rolService.getByRolNombre(RolNombre.ROL_ADMIN).get());
+            roles.add(rolService.getByRolNombre(RolNombre.ROLE_ADMIN).get());
         usuario.setRoles(roles);
         usuarioService.saveUsuario(usuario);
 
@@ -71,6 +71,7 @@ public class AuthController {
     }
 
     @PostMapping("/login")
+
     public ResponseEntity<JwtDto> login(@Valid @RequestBody LoginUsuario loginUsuario, BindingResult bindingResult) {
         if (bindingResult.hasErrors())
             return new ResponseEntity(new Mensaje("Verifique  sus datos "), HttpStatus.BAD_REQUEST);
@@ -80,8 +81,8 @@ public class AuthController {
 
         String jwt = jwtProvider.generateToken(authentication);
 
-        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+        UserDetails userDetails = (UserDetails)authentication.getPrincipal();
         JwtDto jwtDto = new JwtDto(jwt, userDetails.getUsername(), userDetails.getAuthorities());
-        return new ResponseEntity(new Mensaje("Bienvenido a Nuestro Aplicativo  "), HttpStatus.OK);
+        return new ResponseEntity(jwtDto, HttpStatus.OK);
     }
 }

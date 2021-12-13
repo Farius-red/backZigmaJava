@@ -9,13 +9,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/producto")
-
+@CrossOrigin(origins = "*")
 public class ProductController {
 
     @Autowired
@@ -47,6 +48,9 @@ public class ProductController {
         Producto producto = productoService.getByNombre(nombre).get();
         return  new ResponseEntity<Producto>(producto, HttpStatus.OK);
     }
+
+
+    @PreAuthorize("hasRole('ADMIN')")
 @PostMapping("/crearProducto")
     public ResponseEntity<?> crear(@RequestBody ProductoDto productoDto){
         if (StringUtils.isBlank(productoDto.getNombre()))
@@ -78,6 +82,7 @@ public class ProductController {
  return  new ResponseEntity(new Mensaje("producto Creado Correctamente"),HttpStatus.OK);
     }
 
+    @PreAuthorize("hasRole('ROl_ADMIN')")
     @PostMapping("/actualizarProducto")
     public ResponseEntity<?> actualizarProducto (@PathVariable("id") int id ,@RequestBody ProductoDto productoDto){
 
@@ -114,5 +119,14 @@ public class ProductController {
 
         }
         return  new ResponseEntity(new Mensaje("producto Creado Correctamente"),HttpStatus.OK);
+    }
+
+    @PreAuthorize("hasRole('ADMIN')")
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<?> delete(@PathVariable("id")int id){
+        if(!productoService.existsById(id))
+            return new ResponseEntity(new Mensaje("no existe"), HttpStatus.NOT_FOUND);
+        productoService.eliminarProducto(id);
+        return new ResponseEntity(new Mensaje("producto eliminado"), HttpStatus.OK);
     }
 }
